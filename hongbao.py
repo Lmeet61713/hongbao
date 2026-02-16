@@ -176,7 +176,7 @@ for i, img_path in enumerate(recall_images):
 st.markdown('<div class="big-red"> 🔎拾碎梦的开始🔍 </div>', unsafe_allow_html=True)
 
 img_menory = r"C:\Users\ASUS\Pictures\menory.jpg"
-st.image(menory, caption="画质越来越模糊，记忆越来越清晰~")
+st.image("images/menory.jpg", caption="画质越来越模糊，记忆越来越清晰~")
 
 # 左右两列，左边放文字，右边放抖音头像
 col3, col4 = st.columns([1, 2])
@@ -194,3 +194,4 @@ st.markdown("---")
 st.markdown("### 啊哈！这就是欢愉~")
 
 st.markdown("#### 咕咕嘎嘎！！！")
+
