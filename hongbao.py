@@ -94,11 +94,10 @@ if st.session_state.selected_option == 1:
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        # 直接显示图片，不用 os.path.exists
-        try:
+        if os.path.exists(img_path1):
             st.image(img_path1, caption="想我了吗？灰宝！🌈🌈🌈")
-        except:
-            st.info("图片显示失败，但文件应该存在")
+        else:
+            st.info("图片未找到，请检查 images/风堇.jpg 是否存在")
     with col_vid:
         if os.path.exists(video_path1):
             st.video(video_path1)
@@ -112,10 +111,10 @@ elif st.session_state.selected_option == 2:
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        try:
+        if os.path.exists(img_path2):
             st.image(img_path2, caption="重新认识一下吧！我叫遐蝶(♡>𖥦<)/♥")
-        except:
-            st.info("图片显示失败，但文件应该存在")
+        else:
+            st.info("图片未找到，请检查 images/遐蝶.jpg 是否存在")
     with col_vid:
         if os.path.exists(video_path2):
             st.video(video_path2)
@@ -129,10 +128,10 @@ elif st.session_state.selected_option == 3:
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        try:
+        if os.path.exists(img_path3):
             st.image(img_path3, caption="3000万世轮回救不了白厄的审美ᐡ•͈ ·̭ •͈ᐡ")
-        except:
-            st.info("图片显示失败，但文件应该存在")
+        else:
+            st.info("图片未找到，请检查 images/阿格莱雅.png 是否存在")
     with col_vid:
         if os.path.exists(video_path3):
             st.video(video_path3)
