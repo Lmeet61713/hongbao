@@ -46,13 +46,13 @@ st.markdown('<div class="big-red">🧨🧨🧧 特别红包 🧧🧨🧨</div>',
 col1, col2 = st.columns([1, 2])
 
 with col1:
-    # 封面图片（请替换成你的图片路径）
-    cover_image_path = r"C:\Users\ASUS\Pictures\钟离.png"  # 修改这里
+    # 封面图片（已改为相对路径，请将图片放入 images 文件夹）
+    cover_image_path = "images/钟离.png"
     if os.path.exists(cover_image_path):
         cover_img = Image.open(cover_image_path)
         st.image(cover_img, width=250)
     else:
-        st.warning("封面图片未找到，请检查路径")
+        st.warning("封面图片未找到，请检查 images/钟离.png 是否存在")
 
 with col2:
     st.markdown('<div class="blessing">', unsafe_allow_html=True)
@@ -88,55 +88,56 @@ with col_c:
 # 根据选中的选项显示内容
 if st.session_state.selected_option == 1:
     st.subheader("选项一的内容")
-    # 放图片和视频（请替换路径）
-    img_path1 = r"C:\Users\ASUS\Pictures\风堇.jpg"
-    video_path1 = r"C:\Users\ASUS\Videos\风堇.mp4"
+    # 图片和视频（请放入对应文件夹）
+    img_path1 = "images/风堇.jpg"
+    video_path1 = "videos/风堇.mp4"
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        if os.path.exists(img_path1):
+        # 直接显示图片，不用 os.path.exists
+        try:
             st.image(img_path1, caption="想我了吗？灰宝！🌈🌈🌈")
-        else:
-            st.info("图片未找到，请检查路径")
+        except:
+            st.info("图片显示失败，但文件应该存在")
     with col_vid:
         if os.path.exists(video_path1):
             st.video(video_path1)
         else:
-            st.info("视频未找到，请检查路径")
+            st.info("视频未找到，请检查 videos/风堇.mp4 是否存在")
 
 elif st.session_state.selected_option == 2:
     st.subheader("选项二的内容")
-    img_path2 = r"C:\Users\ASUS\Pictures\遐蝶.jpg"
-    video_path2 = r"C:\Users\ASUS\Videos\遐蝶.mp4"
+    img_path2 = "images/遐蝶.jpg"
+    video_path2 = "videos/遐蝶.mp4"
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        if os.path.exists(img_path2):
+        try:
             st.image(img_path2, caption="重新认识一下吧！我叫遐蝶(♡>𖥦<)/♥")
-        else:
-            st.info("图片未找到，请检查路径")
+        except:
+            st.info("图片显示失败，但文件应该存在")
     with col_vid:
         if os.path.exists(video_path2):
             st.video(video_path2)
         else:
-            st.info("视频未找到，请检查路径")
+            st.info("视频未找到，请检查 videos/遐蝶.mp4 是否存在")
 
 elif st.session_state.selected_option == 3:
     st.subheader("选项三的内容")
-    img_path3 = r"C:\Users\ASUS\Pictures\阿格莱雅.png"
-    video_path3 = r"C:\Users\ASUS\Videos\阿格莱雅.mp4"
+    img_path3 = "images/阿格莱雅.png"
+    video_path3 = "videos/阿格莱雅.mp4"
 
     col_img, col_vid = st.columns(2)
     with col_img:
-        if os.path.exists(img_path3):
+        try:
             st.image(img_path3, caption="3000万世轮回救不了白厄的审美ᐡ•͈ ·̭ •͈ᐡ")
-        else:
-            st.info("图片未找到，请检查路径")
+        except:
+            st.info("图片显示失败，但文件应该存在")
     with col_vid:
         if os.path.exists(video_path3):
             st.video(video_path3)
         else:
-            st.info("视频未找到，请检查路径")
+            st.info("视频未找到，请检查 videos/阿格莱雅.mp4 是否存在")
 
 # 可以加一个分隔线
 st.markdown("---")
@@ -146,12 +147,12 @@ st.markdown('<div class="section-title">💖 宝藏收藏家 💖</div>', unsafe
 
 # 这里可以放多张图片，例如用三列显示
 recall_images = [
-    r"C:\Users\ASUS\Pictures\fll.jpg",
-    r"C:\Users\ASUS\Pictures\fnn.jpg",
-    r"C:\Users\ASUS\Pictures\小卡.jpg",
-    r"C:\Users\ASUS\Pictures\白厄.jpg",
-    r"C:\Users\ASUS\Pictures\长夜月.png",
-    r"C:\Users\ASUS\Pictures\昔涟.png",
+    "images/fll.jpg",
+    "images/fnn.jpg",
+    "images/小卡.jpg",
+    "images/白厄.jpg",
+    "images/长夜月.png",
+    "images/昔涟.png",
 ]
 recall_captions = [
     "想喝糖福禄和coko可乐嘛？想？那你就等着吧，哼~",
@@ -160,23 +161,23 @@ recall_captions = [
     "搭档！我们一起去训练吧~🔪🔪",
     "我才不是傻不啦叽的(￣﹃￣)",
     "嘘~˶ᵒ ᵕ ˂˶  ಣ"
-]  # 你可以任意修改这里的文字
+]
 # 每行显示3张图片
 cols = st.columns(3)
 for i, img_path in enumerate(recall_images):
     with cols[i % 3]:
         if os.path.exists(img_path):
             img = Image.open(img_path)
-            # 使用自定义标题，如果 recall_captions 存在且长度足够，否则用默认标题
             caption = recall_captions[i] if i < len(recall_captions) else f"回忆{i + 1}"
             st.image(img, use_container_width=True, caption=caption)
         else:
-            st.write(f"图片{i + 1}未找到")
+            st.write(f"图片{i + 1}未找到，请检查路径：{img_path}")
+
 # ------------------ 第四部分：拾碎回忆 ------------------
 st.markdown('<div class="big-red"> 🔎拾碎梦的开始🔍 </div>', unsafe_allow_html=True)
 
-img_menory = r"C:\Users\ASUS\Pictures\menory.jpg"
-st.image("images/menory.jpg", caption="画质越来越模糊，记忆越来越清晰~")
+img_menory = "images/menory.jpg"
+st.image(img_menory, caption="画质越来越模糊，记忆越来越清晰~")
 
 # 左右两列，左边放文字，右边放抖音头像
 col3, col4 = st.columns([1, 2])
@@ -187,11 +188,10 @@ with col3:
     st.markdown("### 我的财力------>")
     st.markdown("### 我的运气------>")
 with col4:
-    st.image(r"C:\Users\ASUS\Pictures\大佬.jpg", width=200)
+    st.image("images/大佬.jpg", width=200)
+
 st.markdown("---")
 # 结语文字
 st.markdown("---")
 st.markdown("### 啊哈！这就是欢愉~")
-
 st.markdown("#### 咕咕嘎嘎！！！")
-
